@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamHub - Previsualización de Servicios</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init('yncFy-DAEns-Nblo9');
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="background-animation"></div>
+
+    <header id="home">
+        <nav>
+            <div class="logo">Stream<span class="highlight">Hub</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#preview">Explorar</a></li>
+                <li><a href="#pricing">Planes</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Descubre tu próximo <span class="gradient-text">Universo Digital</span></h1>
+                <p>Accede a las mejores plataformas de streaming y herramientas de IA con una calidad inigualable. Nos
+                    diferenciamos por ofrecer un servicio premium, soporte dedicado y la mejor experiencia del mercado.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="cta-button">Ver Catálogo</a>
+                </div>
+            </div>
+
+            <div class="hero-visuals">
+                <div class="floating-icon icon-1"><i class="fa-brands fa-spotify"></i></div>
+                <div class="floating-icon icon-2"><i class="fa-solid fa-n"></i></div>
+                <div class="floating-icon icon-3"><i class="fa-solid fa-dragon"></i></div>
+                <div class="floating-icon icon-4"><i class="fa-solid fa-robot"></i></div>
+                <div class="floating-icon icon-5"><i class="fa-solid fa-gem"></i></div>
+                <div class="floating-icon icon-6"><i class="fa-solid fa-tv"></i></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="services" class="services-container">
+            <h2 class="section-title">Elige tu Plataforma</h2>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="video">Video</button>
+                <button class="filter-btn" data-filter="music">Música</button>
+                <button class="filter-btn" data-filter="ai">IA & Productividad</button>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Cards will be injected by JS or hardcoded here. Let's hardcode for structure but use JS for data binding later if needed. For now, hardcoded is fine for the visual structure. -->
+
+                <div class="card" data-category="music" data-service="spotify" style="--brand-color: #1DB954;">
+                    <div class="card-icon"><i class="fa-brands fa-spotify"></i></div>
+                    <h3>Spotify</h3>
+                    <p>Música sin límites.</p>
+                    <div class="glow"></div>
+                </div>
+
+                <div class="card" data-category="video" data-service="netflix" style="--brand-color: #E50914;">
+                    <div class="card-icon"><i class="fa-solid fa-n"></i></div>
+                    <!-- FontAwesome doesn't always have Netflix N, using generic or text if needed, but let's try N -->
+                    <h3>Netflix</h3>
+                    <p>Películas y series.</p>
+                    <div class="glow"></div>
+                </div>
+
+                <div class="card" data-category="video" data-service="crunchyroll" style="--brand-color: #F47521;">
+                    <div class="card-icon"><i class="fa-solid fa-dragon"></i></div> <!-- Placeholder for anime -->
+                    <h3>Crunchyroll</h3>
+                    <p>El mejor anime.</p>
+                    <div class="glow"></div>
+                </div>
+
+                <div class="card" data-category="ai" data-service="chatgpt" style="--brand-color: #10A37F;">
+                    <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+                    <h3>ChatGPT</h3>
+                    <p>IA conversacional.</p>
+                    <div class="glow"></div>
+                </div>
+
+                <div class="card" data-category="ai" data-service="gemini" style="--brand-color: #4E86F6;">
+                    <div class="card-icon"><i class="fa-solid fa-gem"></i></div>
+                    <h3>Google Gemini</h3>
+                    <p>IA multimodal de Google.</p>
+                    <div class="glow"></div>
+                </div>
+
+                <div class="card" data-category="video" data-service="vix" style="--brand-color: #FF4B00;">
+                    <div class="card-icon"><i class="fa-solid fa-tv"></i></div>
+                    <h3>Vix Premium</h3>
+                    <p>Streaming en español.</p>
+                    <div class="glow"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="preview" class="preview-section">
+            <div class="preview-content hidden">
+                <div class="preview-info">
+                    <h2 id="preview-title">Selecciona un servicio</h2>
+                    <p id="preview-desc">Haz clic en una tarjeta arriba para ver los detalles, planes y características
+                        exclusivas.</p>
+                    <ul id="preview-features" class="features-list">
+                        <!-- Features injected via JS -->
+                    </ul>
+                    <button id="preview-action" class="action-btn">Suscribirse Ahora</button>
+                </div>
+                <div class="preview-visual">
+                    <div class="device-mockup">
+                        <div class="screen" id="preview-screen">
+                            <!-- Dynamic content/gradient based on service -->
+                            <div class="placeholder-text">Vista Previa</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="empty-state">
+                <p>Interactúa con las tarjetas para revelar la magia ✨</p>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing-section">
+            <h2 class="section-title">Planes Disponibles</h2>
+            <div class="pricing-grid">
+                <!-- Spotify -->
+                <div class="pricing-card" style="--brand-color: #1DB954;">
+                    <div class="pricing-header">
+                        <i class="fa-brands fa-spotify"></i>
+                        <h3>Spotify</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <span class="amount">3</span>
+                            <span class="period">/ 1 Mes</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Premium Individual</li>
+                            <li><i class="fa-solid fa-check"></i> Sin Anuncios</li>
+                            <li><i class="fa-solid fa-check"></i> Calidad Alta</li>
+                        </ul>
+                        <button class="pricing-btn">Elegir Plan</button>
+                    </div>
+                </div>
+
+                <!-- Netflix -->
+                <div class="pricing-card" style="--brand-color: #E50914;">
+                    <div class="pricing-header">
+                        <i class="fa-solid fa-n"></i>
+                        <h3>Netflix</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <span class="amount">4</span>
+                            <span class="period">/ 1 Mes</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> 4K Ultra HD</li>
+                            <li><i class="fa-solid fa-check"></i> 4 Pantallas</li>
+                            <li><i class="fa-solid fa-check"></i> Todo el catálogo</li>
+                        </ul>
+                        <button class="pricing-btn">Elegir Plan</button>
+                    </div>
+                </div>
+
+                <!-- Crunchyroll -->
+                <div class="pricing-card" style="--brand-color: #F47521;">
+                    <div class="pricing-header">
+                        <i class="fa-solid fa-dragon"></i>
+                        <h3>Crunchyroll</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <span class="amount">3</span>
+                            <span class="period">/ 1 Mes</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Fan Mega</li>
+                            <li><i class="fa-solid fa-check"></i> Sin Publicidad</li>
+                            <li><i class="fa-solid fa-check"></i> Emisión Simultánea</li>
+                        </ul>
+                        <button class="pricing-btn">Elegir Plan</button>
+                    </div>
+                </div>
+
+                <!-- ChatGPT -->
+                <div class="pricing-card" style="--brand-color: #10A37F;">
+                    <div class="pricing-header">
+                        <i class="fa-solid fa-robot"></i>
+                        <h3>ChatGPT</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <span class="amount">5</span>
+                            <span class="period">/ 1 Mes</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Plus (GPT-4)</li>
+                            <li><i class="fa-solid fa-check"></i> Acceso Prioritario</li>
+                            <li><i class="fa-solid fa-check"></i> Plugins & Beta</li>
+                        </ul>
+                        <button class="pricing-btn">Elegir Plan</button>
+                    </div>
+                </div>
+
+                <!-- Gemini -->
+                <div class="pricing-card" style="--brand-color: #4E86F6;">
+                    <div class="pricing-header">
+                        <i class="fa-solid fa-gem"></i>
+                        <h3>Gemini</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <span class="amount">5</span>
+                            <span class="period">/ 1 Mes</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Advanced</li>
+                            <li><i class="fa-solid fa-check"></i> 1.5 Pro Model</li>
+                            <li><i class="fa-solid fa-check"></i> 2TB Storage</li>
+                        </ul>
+                        <button class="pricing-btn">Elegir Plan</button>
+                    </div>
+                </div>
+
+                <!-- Vix -->
+                <div class="pricing-card" style="--brand-color: #FF4B00;">
+                    <div class="pricing-header">
+                        <i class="fa-solid fa-tv"></i>
+                        <h3>Vix Premium</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <span class="amount">3</span>
+                            <span class="period">/ 1 Mes</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Deportes en Vivo</li>
+                            <li><i class="fa-solid fa-check"></i> Sin Anuncios</li>
+                            <li><i class="fa-solid fa-check"></i> Originales</li>
+                        </ul>
+                        <button class="pricing-btn">Elegir Plan</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="checkout-modal hidden">
+        <div class="checkout-overlay"></div>
+        <div class="checkout-container">
+            <button class="close-checkout"><i class="fa-solid fa-xmark"></i></button>
+            <div class="checkout-header">
+                <h2>Resumen de Compra</h2>
+                <p>Estás a un paso de obtener tu servicio.</p>
+            </div>
+
+            <div class="checkout-body">
+                <div class="product-info">
+                    <div class="product-icon" id="checkout-icon">
+                        <i class="fa-brands fa-spotify"></i>
+                    </div>
+                    <div class="product-text">
+                        <h3 id="checkout-product-name">Spotify Premium</h3>
+                        <p>Plan Mensual</p>
+                    </div>
+                    <div class="product-price">
+                        $<span id="checkout-unit-price">3</span> USD
+                    </div>
+                </div>
+
+                <div class="quantity-section">
+                    <label>Cantidad (Volumen disponible)</label>
+                    <div class="qty-control">
+                        <button class="qty-btn" id="qty-minus"><i class="fa-solid fa-minus"></i></button>
+                        <input type="number" id="quantity" value="1" min="1">
+                        <button class="qty-btn" id="qty-plus"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+
+                <div class="email-section">
+                    <label>Tu Correo Electrónico</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="user-email" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    <p class="input-hint">Te enviaremos los accesos a este correo.</p>
+                </div>
+
+                <div class="payment-section">
+                    <h3>Método de Pago</h3>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="paypal" checked>
+                            <div class="option-card">
+                                <i class="fa-brands fa-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="binance">
+                            <div class="option-card">
+                                <i class="fa-brands fa-bitcoin"></i>
+                                <span>Binance</span>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="spei">
+                            <div class="option-card">
+                                <i class="fa-solid fa-building-columns"></i>
+                                <span>SPEI (Solo México)</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="checkout-total">
+                    <span>Total a Pagar:</span>
+                    <span class="total-amount">$<span id="checkout-total">3</span> USD</span>
+                </div>
+
+                <button class="confirm-purchase-btn">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Diseñada por GKeys, Con Derechos de Autor 2025 <i class="fa-solid fa-heart" style="color: red;"></i>
+            para la web.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
