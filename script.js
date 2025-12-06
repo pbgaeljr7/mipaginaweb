@@ -50,6 +50,101 @@ const servicesData = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    // ========================================
+    // HAMBURGER MENU LOGIC
+    // ========================================
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    if (hamburger && navLinks) {
+        // Create overlay element
+        const overlay = document.createElement('div');
+        overlay.className = 'nav-overlay';
+        document.body.appendChild(overlay);
+
+        // Toggle menu function
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Hamburger click
+        hamburger.addEventListener('click', toggleMenu);
+
+        // Overlay click to close
+        overlay.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Close menu on window resize (if becomes desktop)
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // ========================================
+    // PRODUCT CARDS MOBILE TAP LOGIC
+    // ========================================
+    const productCards = document.querySelectorAll('.product-card');
+
+    if (productCards.length > 0) {
+        // Check if it's a touch device
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+        if (isTouchDevice) {
+            productCards.forEach(card => {
+                card.addEventListener('click', function (e) {
+                    // If card is already active, let the link work
+                    if (this.classList.contains('touch-active')) {
+                        return;
+                    }
+
+                    // Prevent default behavior
+                    e.preventDefault();
+
+                    // Remove active class from all other cards
+                    productCards.forEach(c => {
+                        if (c !== this) {
+                            c.classList.remove('touch-active');
+                        }
+                    });
+
+                    // Toggle active class on this card
+                    this.classList.toggle('touch-active');
+                });
+            });
+
+            // Close popup when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('.product-card')) {
+                    productCards.forEach(card => {
+                        card.classList.remove('touch-active');
+                    });
+                }
+            });
+        }
+    }
+
     // Filter Logic (only on index.html)
     const cards = document.querySelectorAll('.product-card');
     const filterBtns = document.querySelectorAll('.filter-btn');

@@ -45,12 +45,14 @@ nav {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 4rem;
+    position: relative;
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: -1px;
+    z-index: 1001;
 }
 
 .highlight {
@@ -73,6 +75,142 @@ nav {
 
 .nav-links a:hover {
     color: var(--text-color);
+}
+
+/* Hamburger Menu Button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger .bar {
+    width: 20px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger Animation when active */
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background: linear-gradient(180deg, #0f0f13 0%, #1a1a2e 100%);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        padding: 2rem;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        z-index: 1000;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.3s ease;
+    }
+
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .nav-links.active li:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-links.active li:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-links.active li:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1.25rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #8b5cf6;
+        background: rgba(139, 92, 246, 0.1);
+    }
+
+    /* Overlay when menu is open */
+    .nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(3px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+    }
+
+    .nav-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    nav {
+        margin-bottom: 2rem;
+    }
 }
 
 /* Hero */
@@ -102,22 +240,6 @@ nav {
     margin-bottom: 2.5rem;
 }
 
-.cta-button {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background: white;
-    color: black;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
-}
-
 /* Services Section */
 .services-container {
     padding: 4rem 5%;
@@ -132,45 +254,75 @@ nav {
 .filters {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.75rem;
     margin-bottom: 3rem;
+    flex-wrap: wrap;
+    padding: 0 1rem;
 }
 
 .filter-btn {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: var(--text-secondary);
-    padding: 0.5rem 1.5rem;
-    border-radius: 20px;
+    padding: 0.6rem 1.25rem;
+    border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: var(--font-main);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-    background: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(99, 102, 241, 0.2));
     color: white;
-    border-color: white;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
 }
 
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+/* Mobile Filter Styles */
+@media (max-width: 480px) {
+    .filters {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding: 0 5%;
+        margin-left: -5%;
+        margin-right: -5%;
+        width: calc(100% + 10%);
+        gap: 0.5rem;
+        padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        padding: 0 1rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+        padding: 0 1rem;
+    }
 }
 
-/* Responsive */
+/* Responsive Hero */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
-    }
-
-    .nav-links {
-        display: none;
-        /* Simple hide for mobile for now */
     }
 }
 
@@ -1020,11 +1172,39 @@ nav {
     z-index: 10;
 }
 
-.product-card:hover .card-info-popup {
+.product-card:hover .card-info-popup,
+.product-card.touch-active .card-info-popup {
     max-height: 300px;
     padding: 1.5rem;
     opacity: 1;
     transform: translateY(0) scale(1);
+}
+
+/* Touch-active card effects */
+.product-card.touch-active {
+    transform: scale(1.02);
+    z-index: 10;
+}
+
+.product-card.touch-active .card-content {
+    border-color: var(--brand-color);
+    box-shadow:
+        0 0 0 1px var(--brand-color),
+        0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.product-card.touch-active .card-title {
+    color: var(--brand-color);
+    text-shadow: 0 0 30px var(--brand-color);
+}
+
+.product-card.touch-active .card-glow {
+    opacity: 0.4;
+}
+
+.product-card.touch-active .neon-logo i {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 15px var(--brand-color)) drop-shadow(0 0 30px var(--brand-color));
 }
 
 .popup-content {
