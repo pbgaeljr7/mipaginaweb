@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GShop - Planes y Precios</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init('yncFy-DAEns-Nblo9');
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="background-animation"></div>
+
+    <header class="planes-header">
+        <nav>
+            <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">G<span
+                        class="highlight">Shop</span></a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="planes.html" class="active">Planes</a></li>
+                <li><a href="soporte.html">Soporte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Warning Pop-up -->
+    <div id="warning-popup" class="warning-popup">
+        <div class="warning-overlay"></div>
+        <div class="warning-container">
+            <div class="warning-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h2>¡Importante!</h2>
+            <div class="warning-message">
+                <p>Para completar la compra de tus productos seleccionados, debes:</p>
+                <div class="warning-steps">
+                    <div class="warning-step">
+                        <span class="step-number">1</span>
+                        <span>Generar tu <strong>Ticket de Compra</strong></span>
+                    </div>
+                    <div class="warning-step">
+                        <span class="step-number">2</span>
+                        <span>Enviarlo por nuestro <strong>contacto de WhatsApp</strong></span>
+                    </div>
+                    <div class="warning-step">
+                        <span class="step-number">3</span>
+                        <span>Esperar confirmación y <strong>recibir tus accesos</strong></span>
+                    </div>
+                </div>
+            </div>
+            <label class="warning-checkbox">
+                <input type="checkbox" id="warning-confirm">
+                <span class="checkmark"></span>
+                <span class="checkbox-text">He leído y entendido la información anterior</span>
+            </label>
+            <button id="warning-close-btn" class="warning-close-btn" disabled>
+                <i class="fa-solid fa-check"></i>
+                Continuar
+            </button>
+        </div>
+    </div>
+
+    <main class="planes-main">
+        <section class="planes-hero">
+            <h1>Elige tu <span class="gradient-text">Plan Perfecto</span></h1>
+            <p>Accede a los mejores servicios de streaming y productividad a precios increíbles. Sin contratos, cancela
+                cuando quieras.</p>
+        </section>
+
+        <section class="pricing-section">
+            <div class="pricing-grid">
+                <!-- Spotify -->
+                <div class="pricing-card" style="--brand-color: #1DB954;">
+                    <div class="pricing-header">
+                        <div class="pricing-icon-neon">
+                            <i class="fa-brands fa-spotify"></i>
+                        </div>
+                        <h3>Spotify</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <span class="amount">3</span>
+                            <span class="period">/ 1 Mes</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Sin Anuncios</li>
+                            <li><i class="fa-solid fa-check"></i> Descargas Offline</li>
+                            <li><i class="fa-solid fa-check"></i> 15h Audiolibros/mes</li>
+                            <li><i class="fa-solid fa-check"></i> Audio 320kbps</li>
+                        </ul>
+                        <button class="pricing-btn">Elegir Plan</button>
+                    </div>
+                </div>
+
+                <!-- Netflix -->
+                <div class="pricing-card" style="--brand-color: #E50914;">
+                    <div class="pricing-header">
+                        <div class="pricing-icon-neon">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <h3>Netflix</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <span class="amount">4</span>
+                            <span class="period">/ 1 Mes</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> 4K + Dolby Vision</li>
+                            <li><i class="fa-solid fa-check"></i> Spatial Audio</li>
+                            <li><i class="fa-solid fa-check"></i> 4 Pantallas</li>
+                            <li><i class="fa-solid fa-check"></i> Juegos Móviles</li>
+                        </ul>
+                        <button class="pricing-btn">Elegir Plan</button>
+                    </div>
+                </div>
+
+                <!-- Crunchyroll -->
+                <div class="pricing-card" style="--brand-color: #F47521;">
+                    <div class="pricing-header">
+                        <div class="pricing-icon-neon">
+                            <i class="fa-solid fa-dragon"></i>
+                        </div>
+                        <h3>Crunchyroll</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <span class="amount">3</span>
+                            <span class="period">/ 1 Mes</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Simulcast Japón</li>
+                            <li><i class="fa-solid fa-check"></i> 4 Dispositivos</li>
+                            <li><i class="fa-solid fa-check"></i> Game Vault</li>
+                            <li><i class="fa-solid fa-check"></i> 10% Descuento</li>
+                        </ul>
+                        <button class="pricing-btn">Elegir Plan</button>
+                    </div>
+                </div>
+
+                <!-- ChatGPT -->
+                <div class="pricing-card" style="--brand-color: #10A37F;">
+                    <div class="pricing-header">
+                        <div class="pricing-icon-neon">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <h3>ChatGPT</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <span class="amount">5</span>
+                            <span class="period">/ 1 Mes</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> GPT-4o Ilimitado</li>
+                            <li><i class="fa-solid fa-check"></i> DALL-E 3 + Visión</li>
+                            <li><i class="fa-solid fa-check"></i> GPTs Personalizados</li>
+                            <li><i class="fa-solid fa-check"></i> Análisis Archivos</li>
+                        </ul>
+                        <button class="pricing-btn">Elegir Plan</button>
+                    </div>
+                </div>
+
+                <!-- Gemini -->
+                <div class="pricing-card" style="--brand-color: #4E86F6;">
+                    <div class="pricing-header">
+                        <div class="pricing-icon-neon">
+                            <i class="fa-solid fa-gem"></i>
+                        </div>
+                        <h3>Gemini</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <span class="amount">5</span>
+                            <span class="period">/ 1 Mes</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Gemini 1.5 Pro</li>
+                            <li><i class="fa-solid fa-check"></i> 2TB Google One</li>
+                            <li><i class="fa-solid fa-check"></i> Gems + Live</li>
+                            <li><i class="fa-solid fa-check"></i> Workspace</li>
+                        </ul>
+                        <button class="pricing-btn">Elegir Plan</button>
+                    </div>
+                </div>
+
+                <!-- Vix -->
+                <div class="pricing-card" style="--brand-color: #FF4B00;">
+                    <div class="pricing-header">
+                        <div class="pricing-icon-neon">
+                            <i class="fa-solid fa-tv"></i>
+                        </div>
+                        <h3>Vix Premium</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <span class="amount">3</span>
+                            <span class="period">/ 1 Mes</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> UEFA Champions</li>
+                            <li><i class="fa-solid fa-check"></i> Liga MX en Vivo</li>
+                            <li><i class="fa-solid fa-check"></i> +100 Canales</li>
+                            <li><i class="fa-solid fa-check"></i> Originales</li>
+                        </ul>
+                        <button class="pricing-btn">Elegir Plan</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="checkout-modal hidden">
+        <div class="checkout-overlay"></div>
+        <div class="checkout-container">
+            <button class="close-checkout"><i class="fa-solid fa-xmark"></i></button>
+            <div class="checkout-header">
+                <h2>Resumen de Compra</h2>
+                <p>Estás a un paso de obtener tu servicio.</p>
+            </div>
+
+            <div class="checkout-body">
+                <div class="product-info">
+                    <div class="product-icon" id="checkout-icon">
+                        <i class="fa-brands fa-spotify"></i>
+                    </div>
+                    <div class="product-text">
+                        <h3 id="checkout-product-name">Spotify Premium</h3>
+                        <p>Plan Mensual</p>
+                    </div>
+                    <div class="product-price">
+                        $<span id="checkout-unit-price">3</span> USD
+                    </div>
+                </div>
+
+                <div class="quantity-section">
+                    <label>Cantidad (Volumen disponible)</label>
+                    <div class="qty-control">
+                        <button class="qty-btn" id="qty-minus"><i class="fa-solid fa-minus"></i></button>
+                        <input type="number" id="quantity" value="1" min="1">
+                        <button class="qty-btn" id="qty-plus"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+
+                <div class="email-section">
+                    <label>Tu Correo Electrónico</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="user-email" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    <p class="input-hint">Te enviaremos los accesos a este correo.</p>
+                </div>
+
+                <div class="payment-section">
+                    <h3>Método de Pago</h3>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="paypal" checked>
+                            <div class="option-card">
+                                <i class="fa-brands fa-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="binance">
+                            <div class="option-card">
+                                <i class="fa-brands fa-bitcoin"></i>
+                                <span>Binance</span>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="spei">
+                            <div class="option-card">
+                                <i class="fa-solid fa-building-columns"></i>
+                                <span>SPEI (Solo México)</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="checkout-total">
+                    <span>Total a Pagar:</span>
+                    <span class="total-amount">$<span id="checkout-total">3</span> USD</span>
+                </div>
+
+                <button class="confirm-purchase-btn">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">G<span class="highlight">Shop</span></div>
+                <p class="footer-tagline">Tu puerta de entrada al entretenimiento digital premium.</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Información</h4>
+                    <ul>
+                        <li><a href="#">Acerca de</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="index.html">Streaming</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="soporte.html">Soporte</a></li>
+                        <li><a href="soporte.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-legal">
+            <a href="#">Este sitio no contiene Cookies</a>
+        </div>
+        <div class="footer-copyright">
+            <span>© GShop 2025</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
